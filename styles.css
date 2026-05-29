@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center center;
+    z-index: 1;
+}
+
+.logo {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    height: 1.2rem;
+    width: auto;
+    filter: brightness(0) invert(1);
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
+}
+
+.glass-card {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 3;
+    max-width: 22rem;
+    padding: 1.5rem 1.75rem 1.5rem 1.5rem;
+    color: #fff;
+    border-radius: 1.25rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.06) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(22px) saturate(160%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+    transform-origin: bottom right;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.glass-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+        radial-gradient(120% 80% at 0% 0%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 50%),
+        radial-gradient(80% 60% at 100% 100%, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0) 60%);
+    mix-blend-mode: screen;
+}
+
+.glass-card.is-hidden {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+    pointer-events: none;
+}
+
+.glass-card__heading {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 0 0.6rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.glass-card__body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.glass-card__close {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.glass-card__close:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.glass-card__close:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 2px;
+}
+
+.glass-card__close svg {
+    width: 0.7rem;
+    height: 0.7rem;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        top: 1.25rem;
+        left: 1.25rem;
+        height: 0.9rem;
+    }
+
+    .glass-card {
+        right: 1rem;
+        bottom: 1rem;
+        left: 1rem;
+        max-width: none;
+        padding: 1.25rem 1.5rem 1.25rem 1.25rem;
+    }
+}
